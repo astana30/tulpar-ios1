@@ -11,7 +11,7 @@ workflows:
       - name: Unzip project
         script: |
           ls
-          unzip element-x-ios-develop.zip -d project
+          unzip element-x-ios-develop (1).zip -d project
           ls project
 
       - name: Build iOS app without code signing
