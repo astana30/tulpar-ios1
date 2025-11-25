@@ -8,11 +8,12 @@ workflows:
       xcode: 16.4
 
     scripts:
-      - name: Unzip project
-        script: |
-          ls
-          unzip element-x-ios-develop (1).zip -d project
-          ls project
+        - name: Unzip project
+    script: |
+      ls
+      unzip "element-x-ios-develop (1).zip" -d project
+      ls project
+
 
       - name: Build iOS app without code signing
         script: |
