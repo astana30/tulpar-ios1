@@ -13,11 +13,12 @@ workflows:
           ls
           unzip "element-x-ios-develop (1).zip" -d project
           ls project
+          ls project/element-x-ios-develop
 
       - name: Build iOS app without code signing
         script: |
           set -e
-          cd project
+          cd project/element-x-ios-develop
           xcodebuild \
             -project ElementX.xcodeproj \
             -scheme ElementX \
@@ -27,5 +28,5 @@ workflows:
             build
 
     artifacts:
-      - project/build/**/Build/Products/**/*.app
-      - project/**/Build/Products/**/*.app
+      - project/element-x-ios-develop/build/**/Build/Products/**/*.app
+      - project/element-x-ios-develop/**/Build/Products/**/*.app
