@@ -1,0 +1,31 @@
+workflows:
+  tulpar-ios-debug:
+    name: TULPAR iOS Debug
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+
+    environment:
+      xcode: 16.4
+
+    scripts:
+      - name: Unzip project
+        script: |
+          ls
+          unzip element-x-ios-develop.zip -d project
+          ls project
+
+      - name: Build iOS app without code signing
+        script: |
+          set -e
+          cd project
+          xcodebuild \
+            -project ElementX.xcodeproj \
+            -scheme ElementX \
+            -configuration Release \
+            -sdk iphoneos \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+    artifacts:
+      - project/build/**/Build/Products/**/*.app
+      - project/**/Build/Products/**/*.app
